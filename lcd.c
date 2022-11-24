@@ -17,6 +17,7 @@ Description  : Source file for the LCD driver.
 #include "gpio.h"
 #include "common_macros.h"
 #include <util/delay.h>
+#include <stdio.h>
 
 /*===========================================================================================================
                                           < Functions Definitions >
@@ -116,7 +117,7 @@ void LCD_displayCharacter(uint8 a_character)
 
 #if (LCD_DATA_BITS_MODE == 8)
 
-	GPIO_writePort(LCD_DATA_PORT_ID,a_command);
+	GPIO_writePort(LCD_DATA_PORT_ID,a_character);
 
 #elif (LCD_DATA_BITS_MODE == 4)
 
@@ -209,9 +210,9 @@ void LCD_displayStringRowColumn(const uint8* const a_character_Ptr, uint8 a_row,
  * [Arguments]     : <a_data>         -> Indicates to the integer value.
  * [return]        : The function returns void.
  ==========================================================================================================*/
-void LCD_displayInteger(uint32 a_data)
+void LCD_displayInteger(int a_data)
 {
-	uint8 buffer[32] = {'\0'};
+	char buffer[16];
 	itoa(a_data,buffer,10);
 	LCD_displayString(buffer);
 }

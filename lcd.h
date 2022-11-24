@@ -22,19 +22,20 @@ Description  : Header file for the LCD driver.
                                 < Definitions and Static Configurations >
 ===========================================================================================================*/
 
-#define LCD_DATA_BITS_MODE                    (4u)    /* The LCD has only two modes: 8-bits and 4-bits. */
+#define LCD_DATA_BITS_MODE                    (8u)
 
+/* The LCD has only two modes: 8-bits and 4-bits. */
 #if ((LCD_DATA_BITS_MODE != 8) && (LCD_DATA_BITS_MODE != 4))
-#error "Invalid LCD data bit mode, it has only two modes: 8-bits and 4-bits."
+#error "Invalid LCD data bit mode, The LCD has only two modes: 8-bits and 4-bits."
 #endif
 
-#define LCD_RS_PORT_ID                        (PORTA_ID)
-#define LCD_RS_PIN_ID                         (PIN1_ID)
+#define LCD_RS_PORT_ID                        (PORTD_ID)
+#define LCD_RS_PIN_ID                         (PIN0_ID)
 
-#define LCD_EN_PORT_ID                        (PORTA_ID)
+#define LCD_EN_PORT_ID                        (PORTD_ID)
 #define LCD_EN_PIN_ID                         (PIN2_ID)
 
-#define LCD_DATA_PORT_ID                      (PORTA_ID)
+#define LCD_DATA_PORT_ID                      (PORTC_ID)
 
 #if (LCD_DATA_BITS_MODE == 4)
 
@@ -126,7 +127,7 @@ void LCD_displayStringRowColumn(const uint8* const a_character_Ptr, uint8 a_row,
  * [Arguments]     : <a_data>         -> Indicates to the integer value.
  * [return]        : The function returns void.
  ==========================================================================================================*/
-void LCD_displayInteger(uint32 a_data);
+void LCD_displayInteger(int a_data);
 
 
 /*===========================================================================================================
