@@ -14,8 +14,8 @@ Description  : Source file for the LCD driver.
 ===========================================================================================================*/
 
 #include "lcd.h"
-#include "gpio.h"
-#include "common_macros.h"
+#include "../MCAL/gpio.h"
+#include "../OTHERS/common_macros.h"
 #include <util/delay.h>
 #include <stdio.h>
 
@@ -174,16 +174,16 @@ void LCD_moveCursor(uint8 a_row, uint8 a_column)
 	switch (a_row)
 	{
 	case 0 :
-		DDRAM_address = a_column + 0X00;
+		DDRAM_address = a_column + LCD_1ST_ROW_1ST_CELL_ADDRESS;
 		break;
 	case 1 :
-		DDRAM_address = a_column + 0X40;
+		DDRAM_address = a_column + LCD_2ND_ROW_1ST_CELL_ADDRESS;
 		break;
 	case 2 :
-		DDRAM_address = a_column + 0X10;
+		DDRAM_address = a_column + LCD_3RD_ROW_1ST_CELL_ADDRESS;
 		break;
 	case 3 :
-		DDRAM_address = a_column + 0X50;
+		DDRAM_address = a_column + LCD_4TH_ROW_1ST_CELL_ADDRESS;
 		break;
 	}
 
@@ -221,7 +221,6 @@ void LCD_displayInteger(int a_data)
  * [Function Name] : LCD_clearScrean
  * [Description]   : Clear the screen of the LCD.
  *                   Also this function deletes the DDRAM of the LCD.
- *                   Then, display this string on the LCD.
  * [Arguments]     : The function takes no arguments.
  * [return]        : The function returns void.
  ==========================================================================================================*/
