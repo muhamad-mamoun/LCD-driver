@@ -154,6 +154,16 @@ void LCD_displayInteger(int a_data);
 
 
 /*===========================================================================================================
+ * [Function Name] : LCD_displayHEX
+ * [Description]   : Convert a specific decimal byte to HEX.
+ *                   Then, display this HEX on the LCD.
+ * [Arguments]     : <a_decimal_byte>         -> Indicates to the decimal byte.
+ * [return]        : The function returns void.
+ ==========================================================================================================*/
+void LCD_displayHEX(uint8 a_decimal_byte);
+
+
+/*===========================================================================================================
  * [Function Name] : LCD_clearScrean
  * [Description]   : Clear the screen of the LCD.
  *                   Also this function deletes the DDRAM of the LCD.
